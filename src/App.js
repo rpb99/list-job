@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
-import Job from './components/Job';
-import Filter from './components/Filter';
+import Jobs from './components/Jobs';
+import Filters from './components/Filters';
 import JobContextProvider from './contexts/JobContext';
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
     <JobContextProvider>
       <Header />
       <div className="App px-6 lg:px-24">
-        <Filter />
-        <Job />
+        <Filters />
+        <Jobs />
       </div>
     </JobContextProvider>
   );

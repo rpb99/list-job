@@ -4,7 +4,7 @@ import { jobReducer } from '../reducer/jobReducer';
 
 const initialState = {
   listJob,
-  filtered: [],
+  filters: [],
 };
 
 export const JobContext = createContext();

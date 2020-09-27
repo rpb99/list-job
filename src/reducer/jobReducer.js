@@ -1,46 +1,26 @@
 export const jobReducer = (state, action) => {
-  let filtered = [];
-  let jobsFilter = [];
   switch (action.type) {
-    case 'FILTER_JOB_ROLE':
-      const role = state.listJob.filter((job) =>
-        Object.values(job).includes(action.payload)
-      );
-      filtered = [...state.filtered, action.payload];
-      filtered = [...new Set(filtered)];
-
-      return {
-        listJob: role,
-        filtered,
-      };
-    case 'FILTER_JOB_LANGUAGE':
-      const language = state.listJob.filter((job) =>
-        Object.values(job.languages).includes(action.payload)
-      );
-      filtered = [...state.filtered, action.payload];
-      filtered = [...new Set(filtered)];
-      return {
-        listJob: language,
-        filtered,
-      };
-    case 'FILTER_JOB_TOOL':
-      const tool = state.listJob.filter((job) =>
-        Object.values(job.tools).includes(action.payload)
-      );
-      console.log(tool);
-      filtered = [...state.filtered, action.payload];
-      filtered = [...new Set(filtered)];
-      return {
-        listJob: tool,
-        filtered,
-      };
-    case 'REMOVE_FILTER':
-      const removeFilter = state.filtered.filter(
-        (filter, i) => i !== action.idx
-      );
+    case 'TAG_CLICK':
+      if (state.filters.includes(action.tag)) {
+        return {
+          listJob: state.listJob,
+          filters: state.filters,
+        };
+      }
       return {
         listJob: state.listJob,
-        filtered: removeFilter,
+        filters: [...state.filters, action.tag],
+      };
+    case 'REMOVE_TAG':
+      const tags = state.filters.filter((tag) => tag !== action.tag);
+      return {
+        listJob: state.listJob,
+        filters: tags,
+      };
+    case 'CLEAR_TAGS':
+      return {
+        listJob: state.listJob,
+        filters: [],
       };
     default:
       return state;
