@@ -30,18 +30,18 @@ function Filter() {
                 {uniqueFilters.map((tag, tagIdx) => (
                   <div className="flex justify-between items-center bg-teal-100 pl-1 rounded-lg mr-6 m-1">
                     <div>{tag}</div>
-                    <div
+                    <button
                       onClick={() => removeTag(tag)}
-                      className="bg-teal-600 px-3 py-1 ml-3 rounded-r-md"
+                      className="bg-teal-600 hover:bg-teal-900 px-3 py-1 ml-3 rounded-r-md"
                     >
                       <FontAwesomeIcon icon={faTimes} color="white" size="md" />
-                    </div>
+                    </button>
                   </div>
                 ))}
               </div>
-              <div onClick={clearTags} className="self-center">
+              <button onClick={clearTags} className="self-center">
                 Clear
-              </div>
+              </button>
             </div>
           </div>
         </div>
